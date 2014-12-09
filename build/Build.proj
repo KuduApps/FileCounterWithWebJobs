@@ -5,7 +5,7 @@
         <Configuration Condition="$(Configuration) == ''">Debug</Configuration>
         <ProjectRoot>$(MSBuildProjectDirectory)\..</ProjectRoot>
         <ArtifactsPath>$(ProjectRoot)\artifacts\$(Configuration)</ArtifactsPath>
-        <ServiceSiteTargetPath>$(ArtifactsPath)\SiteExtensions\filecounter</ServiceSiteTargetPath>
+        <ServiceSiteTargetPath>$(ArtifactsPath)\SiteExtensions\filecounterwithwebjobs</ServiceSiteTargetPath>
     </PropertyGroup>
     
     <Target Name="RunAll" DependsOnTargets="BuildSite; BuildZips" />
@@ -16,7 +16,7 @@
 
     <Target Name="BuildSite">
         <ItemGroup>
-            <ServiceSiteFilesToCopy Include="$(ProjectRoot)\simple\*" />
+            <ServiceSiteFilesToCopy Include="$(ProjectRoot)\simple\**" />
         </ItemGroup>        
         <Copy SourceFiles="%(ServiceSiteFilesToCopy.FullPath)" DestinationFiles="$(ServiceSiteTargetPath)\%(RecursiveDir)%(Filename)%(Extension)" 
                 SkipUnchangedFiles="true" />
